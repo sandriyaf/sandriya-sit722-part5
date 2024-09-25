@@ -12,7 +12,7 @@ services:
      - "4200:4200"
     environment:
       - PORT=4200
-      - DATABASE_URL=postgresql://sit722_7_2part3_user:NTrbXYAAWvBAqJYf9XtZcgZziihtUEcz@dpg-crgkep5svqrc73f2pme0-a.oregon-postgres.render.com/sit722_7_2part3
+      - DATABASE_URL=postgresql://sit722_9_2d_user:NvsakndxaZ8IP1iYYK08OOT98DQOtoPh@dpg-crpqoe0gph6c73a1lp3g-a.oregon-postgres.render.com/sit722_9_2d
     restart: "no"
 
   book-inventory:
@@ -25,5 +25,5 @@ services:
      - "6001:6001"
     environment:
       - PORT=6001
-      - DATABASE_URL=postgresql://sit722_7_2part3_user:NTrbXYAAWvBAqJYf9XtZcgZziihtUEcz@dpg-crgkep5svqrc73f2pme0-a.oregon-postgres.render.com/sit722_7_2part3
+      - DATABASE_URL=postgresql://sit722_9_2d_user:NvsakndxaZ8IP1iYYK08OOT98DQOtoPh@dpg-crpqoe0gph6c73a1lp3g-a.oregon-postgres.render.com/sit722_9_2d
     restart: "no"

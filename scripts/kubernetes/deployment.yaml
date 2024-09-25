@@ -1,1 +1,79 @@
 # Your Solution
+#deployment details for loading deakin-library image
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: books
+  template:
+    metadata:
+      labels:
+        app: books
+    spec:
+      containers:
+        - name: books
+          image: sit722partt003.azurecr.io/books:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4200
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://sit722_9_2d_user:NvsakndxaZ8IP1iYYK08OOT98DQOtoPh@dpg-crpqoe0gph6c73a1lp3g-a.oregon-postgres.render.com/sit722_9_2d"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: books
+spec:
+  selector:
+    app: books
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 31000
+      targetPort: 4200
+
+---
+#deployment details for loading deakin-library image (book_catalog)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory
+  labels:
+    app: inventory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory
+  template:
+    metadata:
+      labels:
+        app: inventory
+    spec:
+      containers:
+        - name: inventory
+          image: sit722partt003.azurecr.io/inventory:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6001
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://sit722_9_2d_user:NvsakndxaZ8IP1iYYK08OOT98DQOtoPh@dpg-crpqoe0gph6c73a1lp3g-a.oregon-postgres.render.com/sit722_9_2d"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory
+spec:
+  selector:
+    app: inventory
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 32000
+      targetPort: 6001
