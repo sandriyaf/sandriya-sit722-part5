@@ -1,3 +1,3 @@
 # Your Solution
 #!/bin/bash
-kubectl apply -f kubernetes/deployment.yaml
+kubectl apply -f scripts\kubernetes\deployment.yaml
