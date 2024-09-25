@@ -1,1 +1,29 @@
 # Your Solution
+version: '3'
+services:
+   
+  book-library:
+    image: books
+    build: 
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    container_name: books
+    ports:
+     - "4200:4200"
+    environment:
+      - PORT=4200
+      - DATABASE_URL=postgresql://sit722_7_2part3_user:NTrbXYAAWvBAqJYf9XtZcgZziihtUEcz@dpg-crgkep5svqrc73f2pme0-a.oregon-postgres.render.com/sit722_7_2part3
+    restart: "no"
+
+  book-inventory:
+    image: inventory
+    build: 
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    container_name: inventory
+    ports:
+     - "6001:6001"
+    environment:
+      - PORT=6001
+      - DATABASE_URL=postgresql://sit722_7_2part3_user:NTrbXYAAWvBAqJYf9XtZcgZziihtUEcz@dpg-crgkep5svqrc73f2pme0-a.oregon-postgres.render.com/sit722_7_2part3
+    restart: "no"
