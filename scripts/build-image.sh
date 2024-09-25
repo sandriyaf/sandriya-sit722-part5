@@ -15,6 +15,8 @@ set -u # or set -o nounset
 : "$CONTAINER_REGISTRY"
 : "$VERSION"
 
-docker build -t $CONTAINER_REGISTRY/books:$VERSION
+docker compose -f ./docker-compose.yml up --build
 
-docker build -t $CONTAINER_REGISTRY/inventory:$VERSION
+docker tag books $CONTAINER_REGISTRY/books:$VERSION 
+
+docker tag inventory $CONTAINER_REGISTRY/inventory:$VERSION 
