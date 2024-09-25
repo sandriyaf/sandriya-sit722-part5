@@ -1,3 +1,3 @@
 # Your Solution
 #!/bin/bash
-kubectl delete -f kubernetes/deployment.yaml
+kubectl delete -f scripts\kubernetes\deployment.yaml
