@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: books
-          image: sandriyapart5.azurecr.io/books:latest
+          image: sandriyapart5.azurecr.io/books:1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 4200
@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
         - name: inventory
-          image: sandriyapart5.azurecr.io/inventory:latest
+          image: sandriyapart5.azurecr.io/inventory:1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 6001
